@@ -21,10 +21,10 @@ class DiscordBot(commands.Bot):
     async def on_ready(self):
         logging.basicConfig(filename=f"./Logs/{date.today()}.log",
                             level=logging.INFO,
-                            format="%(asctime)s %(message)s")
+                            format="%(asctime)s [%(levelname)s] %(message)s")
         logging.info("Logged in as {0.user}".format(self))
         print("Logged in as {0.user}".format(self))
-        await self.change_presence(status=discord.Status.online)
+        await self.change_presence(activity=discord.Game("flees the agents of Nintendo"), status=discord.Status.online)
 
     async def on_command_error(self, ctx, error):
         if isinstance(error, commands.MissingRequiredArgument):

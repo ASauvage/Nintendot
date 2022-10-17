@@ -18,6 +18,10 @@ class Help(commands.Cog):
                               description="\n\n", color=0xE60012)
         embed.set_thumbnail(url=self.bot.user.display_avatar.url)
 
+        for command in HELP:
+            embed.add_field(
+                name=PREFIX + command['title'], value=command["description"], inline=False)
+
         embed.add_field(name=f"{PREFIX}help",
                         value=f"Show this help menu\n",
                         inline=False)
